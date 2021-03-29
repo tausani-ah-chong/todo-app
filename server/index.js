@@ -1,6 +1,34 @@
-const server = require('./server')
+const express = require('express')
+const server = express()
 
-const port = process.env.PORT || 3000
+const mysql = require('mysql')
+
+const db = mysql.createConnection({
+  user: 'root',
+  host: 'localhost',
+  password: 'password',
+  database: 'todoList'
+})
+
+server.use(express.json())
+
+const port = process.env.PORT || 5000
+
+server.post('/create', (req, res) => {
+  const todoText = req.body.text
+  db.query(
+    "INSERT INTO todos (text) VALUES (?)",
+    [todoText],
+    (err, result) => {
+      if (err) {
+        console.log("aint working bruh", err)
+      } else {
+        res.send('Values Inserted!')
+        console.log(result)
+      }
+    }
+  )
+})
 
 server.listen(port, () => {
   // eslint-disable-next-line no-console
