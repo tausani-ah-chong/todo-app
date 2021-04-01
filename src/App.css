@@ -1,6 +1,6 @@
 .container {
   text-align: center;
-  padding: 5% 20%;
+  padding: 5% 40%;
 }
 
 .todo {
@@ -19,13 +19,13 @@
   margin: 5px;
 }
 
-.list {
+.todos {
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
-  list-style-type: none;
-  margin: 5px 0;
+  list-style: none;
 }
 
-.list label {
-  padding-left: 5px;
+.todos li {
+  margin: 5px 0;
 }

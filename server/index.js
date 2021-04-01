@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors')
 const server = express()
 
 const port = process.env.PORT || 5000
@@ -8,6 +9,7 @@ server.listen(port, () => {
   console.log('Server listening on port', port)
 })
 
+server.use(cors())
 server.use(express.json())
 
 const apiRoute = "/api/v1"
@@ -42,7 +44,7 @@ server.get(apiRoute, (req, res) => {
     if (err) {
       console.log(err)
     } else {
-      res.send(result)
+      res.json(result)
       console.log("Success!");
     }
   })
