@@ -33,7 +33,6 @@ server.post(apiRoute, (req, res) => {
         console.log("aint working bruh", err)
       } else {
         res.send('Values Inserted!')
-        console.log(result)
       }
     }
   )
